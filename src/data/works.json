@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Software Engineer",
+    "company": "PortPro",
+    "dateStarted": "July 26, 2025",
+    "dateEnd": "Present",
+    "description": [
+      "Engineered scalable software solutions and optimized engineering workflows for high-performance systems.",
+      "Architected and maintained a comprehensive, data-driven ship port management system."
+    ]
+  },
+  {
+    "title": "Full Stack Intern",
+    "company": "Sunya Tech Pvt Ltd",
+    "dateStarted": "January 03, 2025",
+    "dateEnd": "July 04, 2025",
+    "description": [
+      "Built and deployed a highly responsive, scalable eCommerce platform using the MERN stack (MongoDB, Express, React, Node.js).",
+      "Optimized frontend performance and implemented secure backend API endpoints."
+    ]
+  }
+]

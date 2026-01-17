@@ -1,0 +1,47 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#292929"/>
+  <rect x="50" y="50" width="500" height="300" rx="10" fill="#1f1f1f"/>
+  
+  <!-- Login Form Card -->
+  <rect x="200" y="80" width="200" height="220" rx="10" fill="#4D4D4D"/>
+  
+  <!-- User Icon -->
+  <circle cx="300" cy="120" r="20" fill="#ffffff"/>
+  <path d="M280 160 Q280 145, 300 145 Q320 145, 320 160 L320 170 L280 170 Z" fill="#ffffff"/>
+  
+  <!-- Input Fields -->
+  <rect x="220" y="180" width="160" height="15" rx="3" fill="#292929"/>
+  <rect x="220" y="205" width="160" height="15" rx="3" fill="#292929"/>
+  
+  <!-- Button -->
+  <rect x="250" y="235" width="100" height="30" rx="5" fill="#ffffff"/>
+  <text x="300" y="255" font-family="Arial, sans-serif" font-size="14" fill="#292929" text-anchor="middle" font-weight="bold">LOGIN</text>
+  
+  <!-- Security Shield Icons -->
+  <g transform="translate(430, 120)">
+    <path d="M0 0 L-15 5 L-15 25 Q-15 35, 0 40 Q15 35, 15 25 L15 5 Z" fill="#4D4D4D" stroke="#ffffff" stroke-width="2"/>
+    <path d="M-8 20 L-3 25 L8 12" stroke="#ffffff" stroke-width="2" fill="none"/>
+  </g>
+  
+  <g transform="translate(470, 180)">
+    <path d="M0 0 L-12 4 L-12 20 Q-12 28, 0 32 Q12 28, 12 20 L12 4 Z" fill="#4D4D4D" stroke="#ffffff" stroke-width="2"/>
+    <text x="0" y="22" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">🔒</text>
+  </g>
+  
+  <!-- Lock Icon -->
+  <g transform="translate(150, 150)">
+    <rect x="-15" y="5" width="30" height="25" rx="3" fill="#4D4D4D" stroke="#ffffff" stroke-width="2"/>
+    <path d="M-10 5 L-10 -5 Q-10 -15, 0 -15 Q10 -15, 10 -5 L10 5" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="0" cy="17" r="3" fill="#ffffff"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="300" y="330" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle">User Registration System</text>
+  <text x="300" y="355" font-family="Arial, sans-serif" font-size="16" fill="#CCCCCC" text-anchor="middle">Secure Authentication</text>
+  
+  <!-- Decorative -->
+  <circle cx="80" cy="90" r="4" fill="#ffffff" opacity="0.3"/>
+  <circle cx="520" cy="310" r="4" fill="#ffffff" opacity="0.3"/>
+  <circle cx="90" cy="300" r="3" fill="#ffffff" opacity="0.2"/>
+</svg>
+

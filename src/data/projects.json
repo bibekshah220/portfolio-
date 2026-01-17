@@ -1,0 +1,44 @@
+[
+  {
+    "id": 0,
+    "title": "E-Commerce Platform (MERN Stack)",
+    "featuredImage": "/ecommerce-project.png",
+    "url": "https://e-commerce-client-omega-ashen.vercel.app/",
+    "stack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Tailwind CSS"
+    ],
+    "description": "<ul style='list-style: disc; padding-left: 1rem;'><li>Developed a full-featured e-commerce system with authentication, cart management, and secure checkout.</li><li>Built reusable React components and backend APIs using Node.js and Express.</li><li>Integrated MongoDB for dynamic product and inventory management.</li></ul>"
+  },
+  {
+    "id": 1,
+    "title": "Product Hunt Clone",
+    "featuredImage": "/tour.png",
+    "url": "https://client-ph-git-main-bibekshah425-gmailcoms-projects.vercel.app/auth",
+    "stack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT",
+      "REST API"
+    ],
+    "description": "<ul style='list-style: disc; padding-left: 1rem;'><li>Built a product discovery platform with authentication and user management.</li><li>Implemented secure user authentication with JWT tokens.</li><li>Developed RESTful APIs for product submissions and voting system.</li></ul>"
+  },
+  {
+    "id": 2,
+    "title": "SQL Agent Application",
+    "featuredImage": "/sql-agent.png",
+    "url": "https://vercel.com/bibekshah425-gmailcoms-projects/sql-agent-n2qg",
+    "stack": [
+      "Next.js",
+      "SQL",
+      "AI/ML",
+      "Vercel"
+    ],
+    "description": "<ul style='list-style: disc; padding-left: 1rem;'><li>Created an intelligent SQL agent for database query automation.</li><li>Integrated AI capabilities for natural language to SQL conversion.</li><li>Deployed on Vercel with optimized performance and monitoring.</li></ul>"
+  }
+]

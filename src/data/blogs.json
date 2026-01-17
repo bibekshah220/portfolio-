@@ -1,0 +1,47 @@
+[
+  {
+    "id": 8,
+    "title": "MCP + Playwright: The Complete Guide to AI Web Interaction",
+    "excerpt": "Learn how the Model Context Protocol (MCP) combined with Playwright enables AI agents to securely and intelligently interact with web browsers.",
+    "date": "2026-01-16",
+    "readTime": "15 min read",
+    "category": "Automation",
+    "url": "/blog/playwright-mcp-guide"
+  },
+  {
+    "id": 7,
+    "title": "Linux Command Line: The Complete Mastery Guide",
+    "excerpt": "Master the Linux Terminal with this comprehensive guide covering everything from file management and permissions to networking and process control.",
+    "date": "2026-01-16",
+    "readTime": "30 min read",
+    "category": "Linux",
+    "url": "/blog/linux-command-line-guide"
+  },
+  {
+    "id": 5,
+    "title": "Mastering Git: The Complete Command Line Guide",
+    "excerpt": "A comprehensive reference for essential Git commands, from basic setup and branching to remote collaboration and advanced workflows.",
+    "date": "2026-01-16",
+    "readTime": "15 min read",
+    "category": "Git & GitHub",
+    "url": "/blog/git-commands-guide"
+  },
+  {
+    "id": 4,
+    "title": "Exploring AWS Lambda: A Practical Guide to Automating EC2 Instance Management",
+    "excerpt": "Learn how to automate EC2 instance management using AWS Lambda, IAM roles, and Amazon EventBridge in this hands-on tutorial.",
+    "date": "2026-01-16",
+    "readTime": "12 min read",
+    "category": "Cloud Computing",
+    "url": "/blog/aws-lambda-guide"
+  },
+  {
+    "id": 1,
+    "title": "Mastering JavaScript: The Complete Modern Guide",
+    "excerpt": "A deep dive into JavaScript, covering everything from core fundamentals and ES6+ features to asynchronous programming and advanced design patterns.",
+    "date": "2026-01-16",
+    "readTime": "25 min read",
+    "category": "JavaScript",
+    "url": "/blog/javascript-mastery"
+  }
+]

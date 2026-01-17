@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.bibekshah.com.np
+
+# Sitemaps
+Sitemap: https://www.bibekshah.com.np/sitemap.xml
