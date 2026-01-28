@@ -1,2 +1,2 @@
-import profile from "./profile.jpg";
+const profile = "/profile.png";
 export { profile };

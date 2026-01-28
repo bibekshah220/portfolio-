@@ -34,11 +34,12 @@ const About = () => {
                 initial="offscreen"
                 whileInView="onscreen"
                 viewport={{ once: true, amount: 0.2 }}
-                className="w-full z-10"
+                className="w-full z-10 relative aspect-square"
               >
                 <Image
                   src={profile}
-                  className="rounded-xl h-full w-full object-cover z-10"
+                  fill
+                  className="rounded-xl object-cover z-10"
                   alt="Profile"
                 />
               </motion.div>

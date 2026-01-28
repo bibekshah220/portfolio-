@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/utils/AnimationVarients";
-import Link from "next/link";
-import { BsArrowRight } from "react-icons/bs";
+import { BsDownload } from "react-icons/bs";
 
 const Info = () => {
   return (
@@ -13,32 +12,52 @@ const Info = () => {
       className="basis-7/12 flex flex-col gap-6 justify-center"
     >
       <div className="flex flex-col gap-4">
-        <motion.h1
-          variants={fadeInUp}
-          className="font-prompt font-semibold lg:text-[4rem] text-[2.3rem] text-textPrimary leading-tight"
-        >
-          Solving problems with <span className="text-primary relative inline-block">code<span className="text-accent animate-pulse">.</span></span>
-        </motion.h1>
+        {/* Hello, I'm */}
         <motion.p
           variants={fadeInUp}
-          className="sm:text-lg text-textSecondary font-karla max-w-[90%] leading-relaxed"
+          className="text-textSecondary font-karla text-lg sm:text-xl"
         >
-          BSc (Hons) Computer Systems Engineering graduate<br className="hidden sm:block" />
-          Building innovative solutions with the MERN stack.
+          Hello, I&apos;m
+        </motion.p>
+
+        {/* Name */}
+        <motion.h1
+          variants={fadeInUp}
+          className="font-prompt font-bold lg:text-[4.5rem] md:text-[3.5rem] text-[2.5rem] text-primary leading-tight"
+        >
+          Bibek Shah
+        </motion.h1>
+
+        {/* Title with highlight */}
+        <motion.p
+          variants={fadeInUp}
+          className="font-karla lg:text-2xl md:text-xl text-lg text-textSecondary"
+        >
+          And I&apos;m a{" "}
+          <span className="text-[#a855f7] font-semibold">
+            Full-Stack Developer
+          </span>
+        </motion.p>
+
+        {/* Description */}
+        <motion.p
+          variants={fadeInUp}
+          className="sm:text-base text-sm text-textDim font-karla max-w-[90%] leading-relaxed mt-2"
+        >
+          Solving problems with code.
         </motion.p>
       </div>
-      <div className="flex-none z-10">
-        <motion.div variants={fadeInUp}>
-          <Link
-            href="#contact"
-            className="w-max flex flex-row gap-3 items-center text-primary rounded-xl py-2 px-6 bg-backgroundSecondary border border-backgroundLight duration-300 transition-all font-medium font-karla hover:bg-backgroundLight hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)] z-10 group sm:text-base text-sm"
-            scroll={false}
-          >
-            <p className="flex">Let&apos;s Connect</p>
-            <BsArrowRight className="group-hover:translate-x-1 duration-300 transition-transform" />
-          </Link>
-        </motion.div>
-      </div>
+
+      {/* Download CV Button */}
+      <motion.div variants={fadeInUp} className="mt-4">
+        <a
+          href="#"
+          className="inline-flex items-center gap-2 bg-[#a855f7] text-white rounded-lg px-6 py-3 font-karla font-medium hover:bg-[#9333ea] transition-all duration-300 hover:shadow-lg hover:shadow-[#a855f7]/50"
+        >
+          <BsDownload />
+          <span>Download CV</span>
+        </a>
+      </motion.div>
     </motion.div>
   );
 };
