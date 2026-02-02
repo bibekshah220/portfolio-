@@ -20,6 +20,7 @@ import {
   SiAmazonwebservices,
   SiVercel,
   SiNetlify,
+  SiN8N,
 } from "react-icons/si";
 
 import SkillCard from "./SkillCard";
@@ -91,6 +92,10 @@ const data = [
   {
     icon: <FaPython />,
     title: "Python",
+  },
+  {
+    icon: <SiN8N />,
+    title: "n8n",
   },
 ];
 

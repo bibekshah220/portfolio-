@@ -1,14 +1,7 @@
 import { motion } from "framer-motion";
-import {
-  slideLeftAnimation,
-  slideRightAnimation,
-  wordsContainerNoDelay,
-} from "@/utils/AnimationVarients";
+import { slideLeftAnimation } from "@/utils/AnimationVarients";
 
 import { BsBoxArrowInUpRight } from "react-icons/bs";
-import Image from "next/image";
-import { profile } from "@/assets";
-import TextContainer from "../common/TextContainer";
 
 const About = () => {
   return (
@@ -16,42 +9,14 @@ const About = () => {
       <div className="bg-backgroundSecondary w-full overflow-hidden">
         <div className="main-container relative py-[3rem]">
           <div className="h-[150px] w-[150px] absolute dots-background right-0 z-0"></div>
-          <div className="sm:py-[4rem] py-[2rem] px-[1.5rem] flex sm:flex-row flex-col items-center justify-between md:gap-[4rem] gap-[2rem] sm:gap-[1rem] z-10">
-            {/* LEFT SIDE IMAGE */}
-            <div className="flex flex-col gap-4 z-10 basis-1/3">
-              <motion.h2
-                variants={wordsContainerNoDelay}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                className="sm:hidden block heading2 text-center"
-              >
-                <TextContainer text="About" />
-              </motion.h2>
-
-              <motion.div
-                variants={slideRightAnimation}
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true, amount: 0.2 }}
-                className="w-full z-10 relative aspect-square"
-              >
-                <Image
-                  src={profile}
-                  fill
-                  className="rounded-xl object-cover z-10"
-                  alt="Profile"
-                />
-              </motion.div>
-            </div>
-
-            {/* RIGHT SIDE CONTENT */}
+          <div className="sm:py-[4rem] py-[2rem] px-[1.5rem] flex flex-col items-center justify-center md:gap-[4rem] gap-[2rem] sm:gap-[1rem] z-10">
+            {/* CONTENT */}
             <motion.div
               variants={slideLeftAnimation}
               initial="offscreen"
               whileInView="onscreen"
               viewport={{ once: true, amount: 0.2 }}
-              className="flex flex-col gap-4 basis-2/3 z-10"
+              className="flex flex-col gap-4 w-full max-w-4xl z-10"
             >
               <h2 className="heading2 sm:block hidden">About</h2>
 

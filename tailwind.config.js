@@ -35,11 +35,11 @@ module.exports = {
         glow: {
           "0%, 100%": {
             boxShadow:
-              "0 0 20px #a855f7, 0 0 40px #a855f7",
+              "0 0 20px #38bdf8, 0 0 40px #38bdf8",
           },
           "50%": {
             boxShadow:
-              "0 0 30px #d946ef, 0 0 60px #d946ef",
+              "0 0 30px #22d3ee, 0 0 60px #22d3ee",
           },
         },
       },

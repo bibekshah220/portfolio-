@@ -34,7 +34,7 @@ const Info = () => {
           className="font-karla lg:text-2xl md:text-xl text-lg text-textSecondary"
         >
           And I&apos;m a{" "}
-          <span className="text-[#a855f7] font-semibold">
+          <span className="text-[#38bdf8] font-semibold">
             Full-Stack Developer
           </span>
         </motion.p>
@@ -48,14 +48,20 @@ const Info = () => {
         </motion.p>
       </div>
 
-      {/* Download CV Button */}
-      <motion.div variants={fadeInUp} className="mt-4">
+      {/* Buttons */}
+      <motion.div variants={fadeInUp} className="mt-4 flex flex-wrap gap-4">
         <a
           href="#"
-          className="inline-flex items-center gap-2 bg-[#a855f7] text-white rounded-lg px-6 py-3 font-karla font-medium hover:bg-[#9333ea] transition-all duration-300 hover:shadow-lg hover:shadow-[#a855f7]/50"
+          className="inline-flex items-center gap-2 border border-[#38bdf8] text-[#38bdf8] rounded-lg px-6 py-3 font-karla font-medium hover:border-white hover:text-white hover:shadow-[0_0_20px_#38bdf8,0_0_40px_#38bdf8] transition-all duration-300"
         >
           <BsDownload />
           <span>Download CV</span>
+        </a>
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-2 border border-[#38bdf8] text-[#38bdf8] rounded-lg px-6 py-3 font-karla font-medium hover:shadow-[0_0_20px_#38bdf8,0_0_40px_#38bdf8] transition-all duration-300"
+        >
+          <span>Let's Connect</span>
         </a>
       </motion.div>
     </motion.div>
