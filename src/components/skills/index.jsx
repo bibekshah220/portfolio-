@@ -5,8 +5,8 @@ import {
   FaJs,
   FaNode,
   FaDocker,
-  FaRobot,
   FaPython,
+  FaPlay,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -21,6 +21,7 @@ import {
   SiVercel,
   SiNetlify,
   SiN8N,
+  SiPostgresql,
 } from "react-icons/si";
 
 import SkillCard from "./SkillCard";
@@ -30,71 +31,75 @@ import { wordsContainerNoDelay } from "@/utils/AnimationVarients";
 
 const data = [
   {
-    icon: <FaReact />,
+    icon: <FaReact color="#61DAFB" />,
     title: "React.js",
   },
   {
-    icon: <SiTypescript />,
+    icon: <SiTypescript color="#3178C6" />,
     title: "TypeScript",
   },
   {
-    icon: <FaHtml5 />,
+    icon: <FaHtml5 color="#E34F26" />,
     title: "HTML5",
   },
   {
-    icon: <FaCss3Alt />,
+    icon: <FaCss3Alt color="#1572B6" />,
     title: "CSS3",
   },
   {
-    icon: <FaJs />,
+    icon: <FaJs color="#F7DF1E" />,
     title: "JavaScript (ES6+)",
   },
   {
-    icon: <SiTailwindcss />,
+    icon: <SiTailwindcss color="#06B6D4" />,
     title: "Tailwind CSS",
   },
   {
-    icon: <FaNode />,
+    icon: <FaNode color="#339933" />,
     title: "Node.js",
   },
   {
-    icon: <SiExpress />,
+    icon: <SiExpress color="#FFFFFF" />,
     title: "Express.js",
   },
   {
-    icon: <SiMongodb />,
+    icon: <SiMongodb color="#47A248" />,
     title: "MongoDB",
   },
   {
-    icon: <SiGit />,
+    icon: <SiGit color="#F05032" />,
     title: "Git",
   },
   {
-    icon: <SiGithub />,
+    icon: <SiGithub color="#FFFFFF" />,
     title: "GitHub",
   },
   {
-    icon: <SiPostman />,
+    icon: <SiPostman color="#FF6C37" />,
     title: "Postman",
   },
   {
-    icon: <FaDocker />,
+    icon: <FaDocker color="#2496ED" />,
     title: "Docker (Basic)",
   },
   {
-    icon: <FaRobot />,
+    icon: <FaPlay color="#2EAD33" />,
     title: "Playwright MCP",
   },
   {
-    icon: <SiAmazonwebservices />,
+    icon: <SiPostgresql color="#4169E1" />,
+    title: "PostgreSQL",
+  },
+  {
+    icon: <SiAmazonwebservices color="#FF9900" />,
     title: "AWS (EC2, S3, IAM)",
   },
   {
-    icon: <FaPython />,
+    icon: <FaPython color="#3776AB" />,
     title: "Python",
   },
   {
-    icon: <SiN8N />,
+    icon: <SiN8N color="#EA4B71" />,
     title: "n8n",
   },
 ];
