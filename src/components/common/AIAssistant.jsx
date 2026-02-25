@@ -4,6 +4,27 @@ import { FiX, FiSend } from 'react-icons/fi';
 import { RiRobot2Line, RiRobot2Fill } from 'react-icons/ri';
 import { useTheme } from '../../utils/ThemeContext';
 
+const renderMessageContent = (content) => {
+    if (typeof content !== 'string') return content;
+    const parts = content.split(/(https?:\/\/[^\s]+)/g);
+    return parts.map((part, i) => {
+        if (/^https?:\/\//.test(part)) {
+            return (
+                <a
+                    key={i}
+                    href={part}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline font-semibold hover:opacity-80 transition-opacity break-all"
+                >
+                    📅 Book a Meeting
+                </a>
+            );
+        }
+        return part;
+    });
+};
+
 const AIAssistant = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
@@ -28,49 +49,33 @@ const AIAssistant = () => {
         setInput('');
         setIsTyping(true);
 
-        // AI Response Logic
-        setTimeout(() => {
-            const lowerInput = input.toLowerCase().trim();
-            let aiResponse = "I'm mostly trained on Bibek's professional info. Try asking about his projects, skills, or contact info!";
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: input }),
+            });
 
-            const knowledgeBase = {
-                identity: ['who are you', 'tell me about yourself', 'bibek shah', 'who is bibek'],
-                skills: ['skill', 'tech', 'stack', 'what can you do', 'programming'],
-                experience: ['experience', 'work', 'job', 'portpro', 'sunya tech', 'intern'],
-                education: ['education', 'college', 'school', 'university', 'study', 'ismt'],
-                projects: ['project', 'build', 'create', 'portfolio', 'ecommerce'],
-                contact: ['contact', 'email', 'phone', 'reach', 'whatsapp', 'gmail', 'mail', 'number'],
-                location: ['where', 'location', 'live', 'kathmandu', 'nepal', 'from'],
-                blogs: ['blog', 'article', 'write', 'lambda', 'aws', 'cloud', 'git', 'github', 'cmd', 'command', 'playwright', 'mcp', 'automation', 'linux', 'terminal', 'cli'],
-                certifications: ["cert", "training", "aws", "ccna", "rhcsa"],
-                greetings: ["hi", "hello", "hey", "hola", "namaste"]
-            };
-
-            if (knowledgeBase.greetings.some(k => lowerInput.includes(k))) {
-                aiResponse = "Hi there! I can help with info about Bibek's projects, stack, or how to contact him.";
-            } else if (knowledgeBase.identity.some(k => lowerInput.includes(k))) {
-                aiResponse = "Bibek is a MERN Stack Developer from Kathmandu, Nepal, focused on building scalable web apps.";
-            } else if (knowledgeBase.contact.some(k => lowerInput.includes(k))) {
-                aiResponse = "You can email him at bibekshah425@gmail.com or WhatsApp +977 9847306600.";
-            } else if (knowledgeBase.location.some(k => lowerInput.includes(k))) {
-                aiResponse = "He's based in Kathmandu, Nepal.";
-            } else if (knowledgeBase.skills.some(k => lowerInput.includes(k))) {
-                aiResponse = "Core stack: MERN (MongoDB, Express, React, Node.js). He also knows Python, TypeScript, AWS, and Docker.";
-            } else if (knowledgeBase.experience.some(k => lowerInput.includes(k))) {
-                aiResponse = "He's a Software Engineer at Portpro (Ship Management). Previously a Full Stack Intern at Sunya Tech.";
-            } else if (knowledgeBase.education.some(k => lowerInput.includes(k))) {
-                aiResponse = "He's pursuing a BSc (Hons) in Computing at ISMT College (2022-2025).";
-            } else if (knowledgeBase.projects.some(k => lowerInput.includes(k))) {
-                aiResponse = "Notable projects: Full-featured E-Commerce Platform, Product Hunt Clone, and an AI SQL Agent.";
-            } else if (knowledgeBase.blogs.some(k => lowerInput.includes(k))) {
-                aiResponse = "He writes about JS, Playwright, Linux, and AWS. Check out the Blog section!";
-            } else if (knowledgeBase.certifications.some(k => lowerInput.includes(k))) {
-                aiResponse = "He's certified in AWS Solutions Architect, CCNA, and RHCSA.";
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                console.error('Server responded with error:', response.status, errorData);
+                throw new Error(errorData.message || `Server error: ${response.status}`);
             }
 
-            setMessages((prev) => [...prev, { role: 'assistant', content: aiResponse }]);
+            const data = await response.json();
+            const aiContent = data.response || "I received an empty response. Please try again.";
+            setMessages((prev) => [...prev, { role: 'assistant', content: aiContent }]);
+        } catch (error) {
+            console.error('Detailed Error fetching AI response:', error);
+            setMessages((prev) => [
+                ...prev,
+                { role: 'assistant', content: `Error: ${error.message}. Please check your connection or contact Bibek.` }
+            ]);
+        } finally {
             setIsTyping(false);
-        }, 1000);
+        }
     };
 
     return (
@@ -109,7 +114,7 @@ const AIAssistant = () => {
                                         ? 'bg-primary text-background rounded-tr-none'
                                         : 'bg-backgroundSecondary text-primary border border-backgroundLight rounded-tl-none'
                                         }`}>
-                                        {msg.content}
+                                        {msg.role === 'assistant' ? renderMessageContent(msg.content) : msg.content}
                                     </div>
                                 </div>
                             ))}
