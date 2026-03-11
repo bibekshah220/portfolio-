@@ -18,7 +18,7 @@ export default function Document() {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700&family=Prompt:wght@100;200;300;400;500;600;700&family=Permanent+Marker&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700&family=Prompt:wght@100;200;300;400;500;600;700&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap"
           rel="stylesheet"
         />
       </Head>

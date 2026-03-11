@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiSend } from 'react-icons/fi';
 import { RiRobot2Line, RiRobot2Fill } from 'react-icons/ri';
-import { useTheme } from '../../utils/ThemeContext';
+
 
 const renderMessageContent = (content) => {
     if (typeof content !== 'string') return content;
@@ -33,7 +33,7 @@ const AIAssistant = () => {
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const scrollRef = useRef(null);
-    const { theme } = useTheme();
+
 
     useEffect(() => {
         if (scrollRef.current) {

@@ -4,15 +4,10 @@ import { useState, useCallback } from "react";
 
 import experienceData from "../../data/works.json";
 import ExperienceCard from "./ExperienceCard";
-import { wordsContainerNoDelay } from "@/utils/AnimationVarients";
-import TextContainer from "../common/TextContainer";
-
-// experienceItem structure: { title, company, dateStarted, dateEnd, description }
 
 const Experience = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  // Using useCallback to prevent unnecessary re-renders of the handleAfterChange function
   const handleAfterChange = useCallback((index) => {
     setActiveSlide(index);
   }, []);
@@ -45,20 +40,20 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="main-container pt-[3rem]">
-      <div className="text-center flex flex-row items-center relative">
+    <section id="experience" className="main-container pt-[5rem]">
+      <div className="text-center flex flex-row items-center relative justify-center">
         <motion.h2
-          variants={wordsContainerNoDelay}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          className="heading2 z-10"
+          transition={{ duration: 0.6 }}
+          className="font-prompt text-primary text-[3rem] sm:text-[4rem] z-10 font-bold"
         >
-          <TextContainer text="Experience" />
+          Experience
         </motion.h2>
         <div className="h-[100px] w-[150px] absolute dots-background right-0 z-0"></div>
       </div>
-      <div className="pt-[2rem] md:px-[3rem]">
+      <div className="pt-[2.5rem] md:px-[3rem]">
         <Slider {...settings} infinite={experienceData.length > 1} focusOnSelect={experienceData.length > 1}>
           {experienceData.map((entry, index) => (
             <ExperienceCard

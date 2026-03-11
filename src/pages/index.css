@@ -3,25 +3,16 @@
 @tailwind utilities;
 
 :root {
-    --background: #ffffff;
-    --backgroundSecondary: #f5f7fa;
-    --backgroundLight: #e2e8f0;
-    --primary: #000000;
-    --textSecondary: #2d3748;
-    --textDim: #4a5568;
-}
-
-.dark {
-    --background: #000000;
-    --backgroundSecondary: #1a202c;
-    --backgroundLight: #2d3748;
+    --background: #111111;
+    --backgroundSecondary: #1a1a1a;
+    --backgroundLight: #2d2d2d;
     --primary: #ffffff;
-    --textSecondary: #cbd5e0;
-    --textDim: #a0aec0;
+    --textSecondary: #c0c0c0;
+    --textDim: #808080;
 }
 
 body {
-    @apply bg-background text-primary transition-colors duration-500 antialiased;
+    @apply bg-background text-primary antialiased;
 }
 
 * {

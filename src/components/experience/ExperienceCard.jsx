@@ -2,16 +2,10 @@ import { motion } from "framer-motion";
 import React from "react";
 import { cardEntrance } from "@/utils/AnimationVarients";
 
-// Defining props for better code clarity
-// data: { title, company, dateStarted, dateEnd, description }
-// active: boolean
-// index: number
-
 const ExperienceCard = ({ data, active, index }) => {
   const duration = React.useMemo(() => {
     const parseDate = (dateStr) => {
       if (dateStr === "Present") return new Date();
-      // Remove comma if present to help parsing
       return new Date(dateStr.replace(",", ""));
     };
 
@@ -20,7 +14,6 @@ const ExperienceCard = ({ data, active, index }) => {
     const start = parseDate(data.dateStarted);
     const end = parseDate(data.dateEnd);
 
-    // Check if dates are valid
     if (isNaN(start.getTime()) || isNaN(end.getTime())) return "";
 
     let years = end.getFullYear() - start.getFullYear();
@@ -30,10 +23,7 @@ const ExperienceCard = ({ data, active, index }) => {
       years--;
       months += 12;
     }
-    // minimal 1 month if same month
     if (months === 0 && years === 0) months = 1;
-
-    // Adjust for partial months roughly if needed or just keep simple month diff
 
     let durationStr = "";
     if (years > 0) {
@@ -52,23 +42,23 @@ const ExperienceCard = ({ data, active, index }) => {
       viewport={{ once: true, amount: 0.2 }}
       variants={cardEntrance}
       custom={index}
-      className={`sm:py-12 sm:px-10 py-8 px-6 ${active ? "bg-backgroundSecondary shadow-lg" : "cursor-pointer hover:-translate-y-1 hover:shadow-xl"
-        } rounded-xl flex flex-col gap-5 mx-6 transition-all duration-300`}
+      className="sm:py-10 sm:px-8 py-8 px-6 bg-backgroundSecondary border border-white/5 rounded-xl flex flex-col gap-5 mx-3 hover:border-white/10 transition-all duration-300"
     >
       <div>
-        <h3 className="font-prompt text-textPrimary font-semibold text-[24px] tracking-wide">
+        <h3 className="font-prompt text-primary font-semibold text-[22px] tracking-wide">
           {data.title}
         </h3>
-        <h4 className="font-prompt text-primary font-medium text-[19px] mt-1">
+        <h4 className="font-prompt text-textSecondary font-medium text-[16px] mt-1">
           {data.company}
         </h4>
-        <p className="font-karla text-textDim font-medium text-sm uppercase pt-3 tracking-widest">
-          {data.dateStarted} - {data.dateEnd} <span className="text-primary normal-case ml-2">{duration}</span>
+        <p className="font-karla text-textDim font-medium text-xs uppercase pt-3 tracking-widest">
+          {data.dateStarted} - {data.dateEnd}{" "}
+          <span className="text-textSecondary normal-case ml-2">{duration}</span>
         </p>
       </div>
-      <ul className="font-karla text-textSecondary list-disc pl-5 max-w-prose leading-relaxed">
+      <ul className="font-karla text-textDim list-disc pl-5 max-w-prose leading-relaxed">
         {data.description.map((entry, key) => (
-          <li key={key} className="pb-3 text-lg">
+          <li key={key} className="pb-3 text-[15px]">
             {entry}
           </li>
         ))}

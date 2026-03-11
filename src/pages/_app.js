@@ -3,11 +3,10 @@ import "./index.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
-import { ThemeProvider } from "../utils/ThemeContext";
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider>
+    <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -25,6 +24,6 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <Analytics />
-    </ThemeProvider>
+    </>
   );
 }
