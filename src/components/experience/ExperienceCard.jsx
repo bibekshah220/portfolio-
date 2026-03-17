@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { cardEntrance } from "@/utils/AnimationVarients";
+import { BsBoxArrowInUpRight } from "react-icons/bs";
 
 const ExperienceCard = ({ data, active, index }) => {
   const duration = React.useMemo(() => {
@@ -63,6 +64,19 @@ const ExperienceCard = ({ data, active, index }) => {
           </li>
         ))}
       </ul>
+      {data.url && (
+        <div className="mt-auto pt-2">
+          <a
+            href={data.url}
+            target="_blank"
+            rel="noreferrer"
+            className="w-max flex flex-row gap-3 items-center text-primary rounded-xl py-2 px-4 bg-backgroundSecondary border border-white/5 duration-150 transition-all font-light font-karla text-sm hover:bg-white/5 hover:border-white/10"
+          >
+            <BsBoxArrowInUpRight />
+            <span>View Project</span>
+          </a>
+        </div>
+      )}
     </motion.div>
   );
 };

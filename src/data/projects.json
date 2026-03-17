@@ -2,7 +2,7 @@
   {
     "id": 0,
     "title": "E-Commerce Platform (MERN Stack)",
-    "featuredImage": "/ecommerce-project.png",
+    "featuredImage": "/ecommerce-project-v2.png",
     "url": "https://e-commerce-client-omega-ashen.vercel.app/",
     "stack": [
       "React",
