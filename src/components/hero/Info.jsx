@@ -33,7 +33,7 @@ const Info = () => {
           variants={fadeInUp}
           className="font-prompt font-semibold lg:text-2xl md:text-xl text-lg text-[#38bdf8] uppercase tracking-widest"
         >
-          Software Engineer & DevOps Engineer
+          Software Engineer
         </motion.p>
 
         {/* Tagline */}
@@ -41,7 +41,7 @@ const Info = () => {
           variants={fadeInUp}
           className="sm:text-base text-sm text-[#d4d4d4] font-karla max-w-[90%] leading-relaxed mt-1"
         >
-          Solving problems with code — building high-performance systems, robust CI/CD pipelines, and scalable cloud-native solutions.
+          Solving problems with code — building high-performance systems and scalable web applications.
         </motion.p>
       </div>
 
