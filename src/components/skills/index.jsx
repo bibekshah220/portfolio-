@@ -6,7 +6,6 @@ import {
   FaNode,
   FaDocker,
   FaPython,
-  FaPlay,
   FaLinux,
   FaNetworkWired,
 } from "react-icons/fa";
@@ -16,24 +15,12 @@ import {
   SiMongodb,
   SiExpress,
   SiPostman,
-  SiJest,
   SiGit,
   SiGithub,
   SiAmazonwebservices,
-  SiVercel,
-  SiNetlify,
-  SiN8N,
   SiPostgresql,
-  SiJenkins,
   SiGithubactions,
-  SiKubernetes,
-  SiTerraform,
-  SiAnsible,
-  SiPrometheus,
-  SiGrafana,
-  SiGnubash,
 } from "react-icons/si";
-import { VscAzure } from "react-icons/vsc";
 
 import SkillCard from "./SkillCard";
 import TextContainer from "../common/TextContainer";
@@ -94,10 +81,6 @@ const data = [
     title: "Docker",
   },
   {
-    icon: <FaPlay color="#2EAD33" />,
-    title: "Playwright MCP",
-  },
-  {
     icon: <SiPostgresql color="#4169E1" />,
     title: "PostgreSQL",
   },
@@ -110,48 +93,12 @@ const data = [
     title: "Python",
   },
   {
-    icon: <SiN8N color="#EA4B71" />,
-    title: "n8n",
-  },
-  {
     icon: <FaLinux color="#FCC624" />,
     title: "Linux (Ubuntu, RHEL)",
   },
   {
-    icon: <SiJenkins color="#D24939" />,
-    title: "Jenkins",
-  },
-  {
     icon: <SiGithubactions color="#2088FF" />,
     title: "GitHub Actions",
-  },
-  {
-    icon: <SiKubernetes color="#326CE5" />,
-    title: "Kubernetes",
-  },
-  {
-    icon: <VscAzure color="#0078D4" />,
-    title: "Microsoft Azure",
-  },
-  {
-    icon: <SiTerraform color="#7B42BC" />,
-    title: "Terraform",
-  },
-  {
-    icon: <SiAnsible color="#EE0000" />,
-    title: "Ansible",
-  },
-  {
-    icon: <SiPrometheus color="#E6522C" />,
-    title: "Prometheus",
-  },
-  {
-    icon: <SiGrafana color="#F46800" />,
-    title: "Grafana",
-  },
-  {
-    icon: <SiGnubash color="#4EAA25" />,
-    title: "Bash",
   },
   {
     icon: <FaNetworkWired color="#005A9C" />,
