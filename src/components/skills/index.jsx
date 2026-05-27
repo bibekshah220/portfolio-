@@ -109,6 +109,16 @@ const data = [
     icon: <SiRabbitmq color="#FF6600" />,
     title: "RabbitMQ",
   },
+  {
+    icon: (
+      <img
+        src="/playwright.svg"
+        alt="Playwright"
+        className="w-[1em] h-[1em] object-contain"
+      />
+    ),
+    title: "Playwright MCP",
+  },
 ];
 
 const Skills = () => {
