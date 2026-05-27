@@ -110,6 +110,10 @@ const data = [
     title: "RabbitMQ",
   },
   {
+    icon: <FaReact color="#61DAFB" />,
+    title: "React Native",
+  },
+  {
     icon: (
       <img
         src="/playwright.svg"
