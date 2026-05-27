@@ -20,6 +20,7 @@ import {
   SiAmazonwebservices,
   SiPostgresql,
   SiGithubactions,
+  SiRabbitmq,
 } from "react-icons/si";
 
 import SkillCard from "./SkillCard";
@@ -103,6 +104,10 @@ const data = [
   {
     icon: <FaNetworkWired color="#005A9C" />,
     title: "Networking & Security",
+  },
+  {
+    icon: <SiRabbitmq color="#FF6600" />,
+    title: "RabbitMQ",
   },
 ];
 
