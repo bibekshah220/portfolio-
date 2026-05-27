@@ -6,8 +6,8 @@ import {
   FaNode,
   FaDocker,
   FaPython,
-  FaLinux,
   FaNetworkWired,
+  FaBrain,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -95,7 +95,13 @@ const data = [
     title: "Python",
   },
   {
-    icon: <FaLinux color="#FCC624" />,
+    icon: (
+      <img
+        src="/linux.svg"
+        alt="Linux"
+        className="w-[1em] h-[1em] object-contain"
+      />
+    ),
     title: "Linux (Ubuntu, RHEL)",
   },
   {
@@ -127,6 +133,10 @@ const data = [
       />
     ),
     title: "CI/CD",
+  },
+  {
+    icon: <FaBrain color="#A855F7" />,
+    title: "RAG",
   },
   {
     icon: (
