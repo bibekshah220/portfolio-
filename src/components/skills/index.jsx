@@ -8,7 +8,6 @@ import {
   FaPython,
   FaLinux,
   FaNetworkWired,
-  FaInfinity,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -100,10 +99,6 @@ const data = [
     title: "Linux (Ubuntu, RHEL)",
   },
   {
-    icon: <SiGithubactions color="#2088FF" />,
-    title: "GitHub Actions",
-  },
-  {
     icon: <FaNetworkWired color="#005A9C" />,
     title: "Networking & Security",
   },
@@ -120,8 +115,28 @@ const data = [
     title: "AWS CloudWatch",
   },
   {
-    icon: <FaInfinity color="#4FC3F7" />,
+    icon: <SiGithubactions color="#2088FF" />,
+    title: "GitHub Actions",
+  },
+  {
+    icon: (
+      <img
+        src="/jenkins.svg"
+        alt="CI/CD"
+        className="w-[1em] h-[1em] object-contain"
+      />
+    ),
     title: "CI/CD",
+  },
+  {
+    icon: (
+      <img
+        src="/redis.svg"
+        alt="Redis"
+        className="w-[1em] h-[1em] object-contain"
+      />
+    ),
+    title: "Redis",
   },
   {
     icon: (
