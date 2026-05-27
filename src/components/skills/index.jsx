@@ -22,6 +22,7 @@ import {
   SiGithubactions,
   SiRabbitmq,
   SiAmazoncloudwatch,
+  SiKubernetes,
 } from "react-icons/si";
 
 import SkillCard from "./SkillCard";
@@ -137,6 +138,10 @@ const data = [
   {
     icon: <FaBrain color="#A855F7" />,
     title: "RAG",
+  },
+  {
+    icon: <SiKubernetes color="#326CE5" />,
+    title: "Kubernetes",
   },
   {
     icon: (
