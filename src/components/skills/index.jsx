@@ -8,6 +8,7 @@ import {
   FaPython,
   FaLinux,
   FaNetworkWired,
+  FaInfinity,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -21,6 +22,7 @@ import {
   SiPostgresql,
   SiGithubactions,
   SiRabbitmq,
+  SiAmazoncloudwatch,
 } from "react-icons/si";
 
 import SkillCard from "./SkillCard";
@@ -112,6 +114,14 @@ const data = [
   {
     icon: <FaReact color="#61DAFB" />,
     title: "React Native",
+  },
+  {
+    icon: <SiAmazoncloudwatch color="#FF4F8B" />,
+    title: "AWS CloudWatch",
+  },
+  {
+    icon: <FaInfinity color="#4FC3F7" />,
+    title: "CI/CD",
   },
   {
     icon: (
