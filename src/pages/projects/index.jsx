@@ -44,20 +44,6 @@ const projects = [
       </ul>
     `,
   },
-  {
-    id: 3,
-    title: "SQL Agent Application",
-    url: "https://vercel.com/bibekshah425-gmailcoms-projects/sql-agent-n2qg",
-    featuredImage: "/clothing-brand.svg.avif",
-    stack: ["Next.js", "SQL", "AI/ML", "Vercel"],
-    description: `
-      <ul style='list-style: disc; padding-left: 1rem;'>
-        <li>Created an intelligent SQL agent for database query automation.</li>
-        <li>Integrated AI capabilities for natural language to SQL conversion.</li>
-        <li>Deployed on Vercel with optimized performance and monitoring.</li>
-      </ul>
-    `,
-  },
 ];
 
 export default function Projects() {
