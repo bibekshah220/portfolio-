@@ -3,8 +3,18 @@ import "./index.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
+import { pageTransition } from "@/utils/AnimationVarients";
+
+const CursorTrail = dynamic(() => import("@/components/common/CursorTrail"), {
+  ssr: false,
+});
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -22,7 +32,24 @@ export default function App({ Component, pageProps }) {
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
       </Head>
-      <Component {...pageProps} />
+      <MotionConfig reducedMotion="user">
+        <CursorTrail />
+        <AnimatePresence
+          mode="wait"
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <motion.div
+            key={router.asPath}
+            variants={pageTransition}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <Component {...pageProps} />
+          </motion.div>
+        </AnimatePresence>
+      </MotionConfig>
       <Analytics />
     </>
   );

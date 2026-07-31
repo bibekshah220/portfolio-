@@ -1,8 +1,9 @@
 import Info from "./Info";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { heroNameAnimation } from "@/utils/AnimationVarients";
 import dynamic from "next/dynamic";
+import { useRef } from "react";
 
 const ParticleBackground = dynamic(
   () => import("@/components/common/ParticleBackground"),
@@ -10,9 +11,27 @@ const ParticleBackground = dynamic(
 );
 
 const Hero = () => {
+  const heroRef = useRef(null);
+
+  // Scroll parallax: the hero drifts down as the page scrolls, so it lags
+  // behind the sections below it (ported from the v2 landing hero).
+  // ponytail: 80px instead of the source's 20vh — enough for the depth cue
+  // while keeping the drift inside the next section's top padding.
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const y = useSpring(useTransform(scrollYProgress, [0, 1], [0, 80]), {
+    stiffness: 100,
+    damping: 20,
+    restDelta: 0.5,
+  });
+
   return (
-    <section
+    <motion.section
       id="hero"
+      ref={heroRef}
+      style={{ y }}
       className="pt-[80px] main-container relative z-10 w-screen overflow-hidden"
     >
       {/* Animated Particle Background */}
@@ -38,7 +57,7 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

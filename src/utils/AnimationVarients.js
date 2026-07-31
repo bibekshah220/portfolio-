@@ -84,15 +84,19 @@ export const slideOutAnimation2 = {
     y: 40,
     opacity: 0,
   },
-  onscreen: {
+  // `custom` is the item index — grid items ripple in per row instead of
+  // landing all at once (ported from the v2 skills showcase stagger).
+  // ponytail: modulo 6 = the widest grid, so the delay never exceeds ~0.3s.
+  onscreen: (index = 0) => ({
     y: 0,
     x: 0,
     opacity: 1,
     transition: {
       type: "tween",
       duration: 0.5,
+      delay: (index % 6) * 0.06,
     },
-  },
+  }),
 };
 
 export const slideRightAnimation = {
@@ -217,6 +221,17 @@ export const heroNameAnimation = {
       delay: 0.2,
     },
   },
+};
+
+// Route change transition. ponytail: opacity only — a transform here would
+// make the wrapper a containing block and break the `fixed` header.
+export const pageTransition = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.35, ease: productionBezier },
+  },
+  exit: { opacity: 0, transition: { duration: 0.2, ease: "easeIn" } },
 };
 
 export const cardEntrance = {
