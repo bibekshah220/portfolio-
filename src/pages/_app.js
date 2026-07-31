@@ -12,6 +12,13 @@ const CursorTrail = dynamic(() => import("@/components/common/CursorTrail"), {
   ssr: false,
 });
 
+// Below the fold of the critical path — the grid is decorative, so it loads
+// after the page is interactive.
+const GridBackground = dynamic(
+  () => import("@/components/common/GridBackground"),
+  { ssr: false }
+);
+
 export default function App({ Component, pageProps }) {
   const router = useRouter();
 
@@ -33,6 +40,7 @@ export default function App({ Component, pageProps }) {
         <meta property="twitter:card" content="summary_large_image" />
       </Head>
       <MotionConfig reducedMotion="user">
+        <GridBackground />
         <CursorTrail />
         <AnimatePresence
           mode="wait"

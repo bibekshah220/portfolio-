@@ -43,7 +43,9 @@ const ExperienceCard = ({ data, active, index }) => {
       viewport={{ once: true, amount: 0.2 }}
       variants={cardEntrance}
       custom={index}
-      className="sm:py-10 sm:px-8 py-8 px-6 bg-backgroundSecondary border border-white/5 rounded-xl flex flex-col gap-5 mx-3 hover:border-white/10 transition-all duration-300"
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 260, damping: 24 }}
+      className="sm:py-10 sm:px-8 py-8 px-6 bg-backgroundSecondary/70 backdrop-blur-md border border-white/5 rounded-xl flex flex-col gap-5 mx-3 hover:border-white/10 hover:shadow-lg hover:shadow-black/20 transition-all duration-300"
     >
       <div>
         <h3 className="font-prompt text-primary font-semibold text-[22px] tracking-wide">

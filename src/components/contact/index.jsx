@@ -14,6 +14,7 @@ import {
   wordsContainerNoDelay,
 } from "@/utils/AnimationVarients";
 import TextContainer from "../common/TextContainer";
+import Magnetic from "@/components/common/Magnetic";
 
 const Contact = () => {
   return (
@@ -51,22 +52,26 @@ const Contact = () => {
           className="flex sm:flex-row flex-col sm:gap-8 gap-4 items-center"
         >
           {/* Email */}
-          <a
-            href="mailto:bibekshah425@gmail.com"
-            className="py-3 px-5 flex flex-row gap-2 text-primary bg-backgroundSecondary rounded-xl shadow-md items-center hover:bg-backgroundLight duration-150 transition-all font-light text-base"
-          >
-            <CiMail className="text-[1.4rem]" />
-            <span className="">bibekshah425@gmail.com</span>
-          </a>
+          <Magnetic max={6}>
+            <a
+              href="mailto:bibekshah425@gmail.com"
+              className="py-3 px-5 flex flex-row gap-2 text-primary bg-backgroundSecondary rounded-xl shadow-md items-center hover:bg-backgroundLight duration-150 transition-all font-light text-base"
+            >
+              <CiMail className="text-[1.4rem]" />
+              <span className="">bibekshah425@gmail.com</span>
+            </a>
+          </Magnetic>
 
           {/* Phone */}
-          <a
-            href="tel:+9779847306600"
-            className="py-3 px-5 flex flex-row gap-2 text-primary bg-backgroundSecondary rounded-xl shadow-md items-center hover:bg-backgroundLight duration-150 transition-all font-light text-base"
-          >
-            <CiPhone className="text-[1.4rem]" />
-            <span className="">+977 9847306600</span>
-          </a>
+          <Magnetic max={6}>
+            <a
+              href="tel:+9779847306600"
+              className="py-3 px-5 flex flex-row gap-2 text-primary bg-backgroundSecondary rounded-xl shadow-md items-center hover:bg-backgroundLight duration-150 transition-all font-light text-base"
+            >
+              <CiPhone className="text-[1.4rem]" />
+              <span className="">+977 9847306600</span>
+            </a>
+          </Magnetic>
         </motion.div>
 
         {/* Social Icons */}
@@ -78,37 +83,43 @@ const Contact = () => {
           className="flex flex-row gap-4 items-center flex-wrap justify-center"
         >
           {/* GitHub */}
-          <a
-            href="https://github.com/bibekshah220"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="text-primary bg-backgroundSecondary hover:bg-backgroundLight duration-150 transition-all p-3 rounded-full">
-              <FaGithub className="text-[1.5rem]" />
-            </div>
-          </a>
+          <Magnetic max={10}>
+            <a
+              href="https://github.com/bibekshah220"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="text-primary bg-backgroundSecondary hover:bg-backgroundLight duration-150 transition-all p-3 rounded-full">
+                <FaGithub className="text-[1.5rem]" />
+              </div>
+            </a>
+          </Magnetic>
 
           {/* LinkedIn */}
-          <a
-            href="https://www.linkedin.com/in/bibek-shah-8b460b2bb"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="text-primary bg-backgroundSecondary hover:bg-backgroundLight duration-150 transition-all p-3 rounded-full">
-              <FaLinkedinIn className="text-[1.5rem]" />
-            </div>
-          </a>
+          <Magnetic max={10}>
+            <a
+              href="https://www.linkedin.com/in/bibek-shah-8b460b2bb"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="text-primary bg-backgroundSecondary hover:bg-backgroundLight duration-150 transition-all p-3 rounded-full">
+                <FaLinkedinIn className="text-[1.5rem]" />
+              </div>
+            </a>
+          </Magnetic>
 
           {/* WhatsApp */}
-          <a
-            href="https://wa.me/9779847306600"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="text-primary bg-backgroundSecondary hover:bg-backgroundLight duration-150 transition-all p-3 rounded-full">
-              <FaWhatsapp className="text-[1.5rem]" />
-            </div>
-          </a>
+          <Magnetic max={10}>
+            <a
+              href="https://wa.me/9779847306600"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="text-primary bg-backgroundSecondary hover:bg-backgroundLight duration-150 transition-all p-3 rounded-full">
+                <FaWhatsapp className="text-[1.5rem]" />
+              </div>
+            </a>
+          </Magnetic>
         </motion.div>
       </div>
 

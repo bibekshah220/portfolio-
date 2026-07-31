@@ -1,26 +1,54 @@
 import { slideOutAnimation } from "@/utils/AnimationVarients";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { useTilt } from "@/utils/pointerMotion";
 import Image from "next/image";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 
 const ProjectCard = ({ data }) => {
+  const reduceMotion = useReducedMotion();
+  // Shallower than the skill tiles — a wide image tilts more visibly than a
+  // small square, so the same angle would read as a wobble.
+  const tilt = useTilt({ max: 4, disabled: reduceMotion });
+
   return (
     <div className="flex flex-col gap-4">
-      <a href={data.url} target="_blank" rel="noreferrer">
+      <a href={data.url} target="_blank" rel="noreferrer" className="group block">
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.2 }}
           variants={slideOutAnimation}
-          className="w-full overflow-hidden rounded-xl"
+          style={{ perspective: 900 }}
+          className="relative"
         >
-          <Image
-            src={data.featuredImage}
-            className="object-cover rounded-xl hover:scale-110 duration-500 transition-all"
-            alt={data.title} // Providing meaningful alt text
-            height={379}
-            width={379}
+          {/* Contact shadow cast under the lifted card. Lives outside the
+              image wrapper, which clips its own overflow. */}
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-8 bottom-0 -z-10 h-10 rounded-[50%] bg-black/50 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 motion-reduce:hidden"
           />
+          <motion.div
+            className="relative w-full overflow-hidden rounded-xl"
+            style={{ rotateX: tilt.rotateX, rotateY: tilt.rotateY }}
+            onPointerMove={tilt.onPointerMove}
+            onPointerLeave={tilt.onPointerLeave}
+            whileHover={reduceMotion ? undefined : { y: -6 }}
+            transition={{ type: "spring", stiffness: 240, damping: 22 }}
+          >
+            <Image
+              src={data.featuredImage}
+              className="object-cover rounded-xl hover:scale-110 duration-500 transition-all"
+              alt={data.title} // Providing meaningful alt text
+              height={379}
+              width={379}
+            />
+            {/* Border lights up on hover, so the whole tile reads as one hit
+                target instead of just the image. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-primary/0 transition-all duration-500 group-hover:ring-primary/30"
+            />
+          </motion.div>
         </motion.div>
       </a>
       <motion.div
@@ -48,8 +76,8 @@ const ProjectCard = ({ data }) => {
           <div
             className="text-textDim font-karla font-light text-sm prose-sm prose-invert max-w-none
                        prose-ul:list-none prose-ul:pl-0 prose-li:mb-2 prose-li:relative prose-li:pl-6
-                       prose-li:before:content-[''] prose-li:before:absolute prose-li:before:left-0 
-                       prose-li:before:top-[10px] prose-li:before:w-2 prose-li:before:h-[2px] 
+                       prose-li:before:content-[''] prose-li:before:absolute prose-li:before:left-0
+                       prose-li:before:top-[10px] prose-li:before:w-2 prose-li:before:h-[2px]
                        prose-li:before:bg-primary/30"
             dangerouslySetInnerHTML={{ __html: data.description }}
           />

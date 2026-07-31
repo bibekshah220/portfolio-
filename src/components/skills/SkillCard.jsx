@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { cardRise, idleBreathe, idleFloat } from "@/utils/AnimationVarients";
-import { useTilt } from "@/utils/useTilt";
+import { useTilt } from "@/utils/pointerMotion";
 
 const FALLBACK_GLOW = "#38bdf8";
 
@@ -40,8 +40,12 @@ const SkillCard = ({ icon, title, index = 0 }) => {
           }}
         />
 
+        {/* Glass surface: same palette colour at 65%, so the graph-paper
+            background reads through the card instead of being blocked by it.
+            `ring` rather than `border` — a ring paints without taking layout
+            space, so nothing shifts. */}
         <div
-          className="relative flex flex-col gap-3 items-center justify-center bg-backgroundSecondary md:py-10 py-6 rounded-xl h-full shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+          className="relative flex flex-col gap-3 items-center justify-center bg-backgroundSecondary/65 backdrop-blur-md ring-1 ring-white/[0.06] md:py-10 py-6 rounded-xl h-full shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
           role="img"
           aria-label={title}
           title={title}

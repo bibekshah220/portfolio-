@@ -1,8 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/utils/AnimationVarients";
 import { BsArrowRight } from "react-icons/bs";
+import Magnetic from "@/components/common/Magnetic";
 
 const Info = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       initial="hidden"
@@ -20,10 +23,22 @@ const Info = () => {
           Hi, I&apos;m
         </motion.p>
 
-        {/* Name */}
+        {/* Name — a slow sheen crosses the wordmark, so the largest element on
+            the page has one point of life without ever pulling focus. */}
         <motion.h1
           variants={fadeInUp}
-          className="font-prompt font-bold lg:text-[4.5rem] md:text-[3.5rem] text-[2.5rem] text-primary leading-tight tracking-tight"
+          className="font-prompt font-bold lg:text-[4.5rem] md:text-[3.5rem] text-[2.5rem] leading-tight tracking-tight bg-clip-text text-transparent"
+          style={{
+            backgroundImage:
+              "linear-gradient(100deg, var(--primary) 20%, #38bdf8 45%, var(--primary) 70%)",
+            backgroundSize: "300% 100%",
+          }}
+          animate={
+            reduceMotion
+              ? { backgroundPosition: "0% 0%" }
+              : { backgroundPosition: ["100% 0%", "0% 0%", "100% 0%"] }
+          }
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         >
           Bibek Shah
         </motion.h1>
@@ -47,13 +62,15 @@ const Info = () => {
 
       {/* Connect Button */}
       <motion.div variants={fadeInUp} className="mt-2">
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-2 border border-textDim text-textSecondary rounded-full px-6 py-3 font-karla font-medium text-sm hover:border-primary hover:text-primary transition-all duration-300 group"
-        >
-          <span>Connect</span>
-          <BsArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-        </a>
+        <Magnetic className="inline-block w-max">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 border border-textDim text-textSecondary rounded-full px-6 py-3 font-karla font-medium text-sm hover:border-primary hover:text-primary transition-all duration-300 group"
+          >
+            <span>Connect</span>
+            <BsArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </Magnetic>
       </motion.div>
     </motion.div>
   );

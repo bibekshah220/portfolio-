@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { slideLeftAnimation } from "@/utils/AnimationVarients";
+import { fadeInUp, staggerContainer } from "@/utils/AnimationVarients";
+import Magnetic from "@/components/common/Magnetic";
 
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 
@@ -11,17 +12,21 @@ const About = () => {
           <div className="h-[150px] w-[150px] absolute dots-background right-0 z-0"></div>
           <div className="sm:py-[4rem] py-[2rem] px-[1.5rem] flex flex-col items-center justify-center md:gap-[4rem] gap-[2rem] sm:gap-[1rem] z-10">
             {/* CONTENT */}
+            {/* Staggered so the reader's eye is walked down the block —
+                heading, then prose, then education, then the CTA. */}
             <motion.div
-              variants={slideLeftAnimation}
-              initial="offscreen"
-              whileInView="onscreen"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               className="flex flex-col gap-4 w-full max-w-4xl z-10"
             >
-              <h2 className="heading2 sm:block hidden">About</h2>
+              <motion.h2 variants={fadeInUp} className="heading2 sm:block hidden">
+                About
+              </motion.h2>
 
               <div className="flex flex-col gap-2">
-                <p className="text-primary font-karla font-light">
+                <motion.p variants={fadeInUp} className="text-primary font-karla font-light">
                   Hey, I am <span className="font-semibold">Bibek Shah</span>, a
                   passionate
                   <span className="font-semibold">
@@ -45,10 +50,10 @@ const About = () => {
                   I’m always excited to collaborate with fellow developers,
                   learn modern technologies, and build impactful solutions that
                   solve real-world problems.
-                </p>
+                </motion.p>
 
                 {/* EDUCATION SECTION */}
-                <div>
+                <motion.div variants={fadeInUp}>
                   <h3 className="heading3">Education</h3>
                   <div className="">
                     <p className="font-karla text-primary text-[20px]">
@@ -66,20 +71,22 @@ const About = () => {
                       </li>
                     </ul>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
-              <div className="w-max">
-                <a
-                  href="" // resume link here
-                  target="_blank"
-                  className="w-max flex flex-row gap-3 items-center text-primary rounded-xl py-2 pl-4 pr-5 bg-backgroundSecondary border border-backgroundLight duration-150 transition-all font-light font-karla hover:bg-backgroundLight"
-                  rel="noreferrer"
-                >
-                  <BsBoxArrowInUpRight />
-                  <span className="">Resume</span>
-                </a>
-              </div>
+              <motion.div variants={fadeInUp} className="w-max">
+                <Magnetic className="inline-block w-max">
+                  <a
+                    href="" // resume link here
+                    target="_blank"
+                    className="w-max flex flex-row gap-3 items-center text-primary rounded-xl py-2 pl-4 pr-5 bg-backgroundSecondary border border-backgroundLight duration-150 transition-all font-light font-karla hover:bg-backgroundLight"
+                    rel="noreferrer"
+                  >
+                    <BsBoxArrowInUpRight />
+                    <span className="">Resume</span>
+                  </a>
+                </Magnetic>
+              </motion.div>
             </motion.div>
           </div>
         </div>
