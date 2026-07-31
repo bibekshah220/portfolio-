@@ -28,7 +28,7 @@ import {
 import SkillCard from "./SkillCard";
 import TextContainer from "../common/TextContainer";
 import { motion } from "framer-motion";
-import { wordsContainerNoDelay } from "@/utils/AnimationVarients";
+import { gridStagger, wordsContainerNoDelay } from "@/utils/AnimationVarients";
 
 const data = [
   {
@@ -182,13 +182,19 @@ const Skills = () => {
           </motion.h2>
         </div>
         <div className="main-container pt-[3rem] px-[1.5rem] w-full overflow-hidden">
-          <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-4 grid-cols-3 md:gap-x-12 md:gap-y-8 gap-x-4 gap-y-4 text-primary">
+          <motion.div
+            variants={gridStagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-4 grid-cols-3 md:gap-x-12 md:gap-y-8 gap-x-4 gap-y-4 text-primary"
+          >
             {data.map((entry, key) => (
               <div className="col-span-1" key={key}>
                 <SkillCard icon={entry.icon} title={entry.title} index={key} />
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

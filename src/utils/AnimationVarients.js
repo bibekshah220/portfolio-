@@ -84,19 +84,15 @@ export const slideOutAnimation2 = {
     y: 40,
     opacity: 0,
   },
-  // `custom` is the item index — grid items ripple in per row instead of
-  // landing all at once (ported from the v2 skills showcase stagger).
-  // ponytail: modulo 6 = the widest grid, so the delay never exceeds ~0.3s.
-  onscreen: (index = 0) => ({
+  onscreen: {
     y: 0,
     x: 0,
     opacity: 1,
     transition: {
       type: "tween",
       duration: 0.5,
-      delay: (index % 6) * 0.06,
     },
-  }),
+  },
 };
 
 export const slideRightAnimation = {
@@ -248,3 +244,53 @@ export const cardEntrance = {
     },
   },
 };
+
+// --- Grid card animations (reusable by any card grid) ---
+
+// Put on the grid wrapper; children inherit `hidden`/`visible` and ripple in.
+// Kept fully opaque so children own the fade — nesting two opacity animations
+// makes the entrance look muddy.
+export const gridStagger = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.035,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+// Fade + rise + slight scale. Transform/opacity only, so it composites on the
+// GPU and never reflows.
+export const cardRise = {
+  hidden: { opacity: 0, y: 24, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: productionBezier },
+  },
+};
+
+// Idle loops. `phase` (an item index) desyncs neighbours so a grid breathes
+// organically instead of pulsing in lockstep.
+export const idleFloat = (phase = 0) => ({
+  y: [0, -4, 0],
+  transition: {
+    duration: 3.2,
+    repeat: Infinity,
+    ease: "easeInOut",
+    delay: (phase % 5) * 0.35,
+  },
+});
+
+export const idleBreathe = (phase = 0) => ({
+  scale: [1, 1.012, 1],
+  transition: {
+    duration: 5,
+    repeat: Infinity,
+    ease: "easeInOut",
+    delay: (phase % 4) * 0.6,
+  },
+});
