@@ -1,69 +1,115 @@
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { useWindowPointerOffset } from "@/utils/pointerMotion";
 
-// Engineering graph paper behind the whole site.
+// Luxury engineering graph paper behind the entire site.
 //
-// Two grid layers (fine + coarse) on a slightly perspective-tilted plane, one
-// ambient light wash, masked so it never reaches a hard edge. Mounted once in
-// _app so it reads as one continuous surface across every section and route.
-//
-// Deliberately CSS-only: the grid is a repeating-linear-gradient, so there is
-// no canvas, no rAF loop and no per-frame paint. Scroll parallax is a single
-// translate3d driven by one motion value — GPU work only.
-const COARSE = 160; // px; the fine grid is a quarter of this, so both loop cleanly
-const PARALLAX = 0.12;
+
+const CELL = 100; // px — the box pitch
+const SUBDIVISION = CELL / 4;
+// Off by default: single clean pitch. Flip to true for classic
+// engineering-paper subdivisions inside each box.
+const SHOW_SUBDIVISIONS = false;
+const OVERSCAN = 160; // plane bleeds past the viewport so motion never shows an edge
+
+// Neutral white at 7% over #050505 lands the lines at rgb(23,23,23) — clearly
+// readable boxes that still sit far below the content.
+const LINE = "rgba(255, 255, 255, 0.07)";
+const LINE_FAINT = "rgba(255, 255, 255, 0.03)";
+
+const grid = [
+  ...(SHOW_SUBDIVISIONS
+    ? [
+        `repeating-linear-gradient(to right, ${LINE_FAINT} 0 1px, transparent 1px ${SUBDIVISION}px)`,
+        `repeating-linear-gradient(to bottom, ${LINE_FAINT} 0 1px, transparent 1px ${SUBDIVISION}px)`,
+      ]
+    : []),
+  `repeating-linear-gradient(to right, ${LINE} 0 1px, transparent 1px ${CELL}px)`,
+  `repeating-linear-gradient(to bottom, ${LINE} 0 1px, transparent 1px ${CELL}px)`,
+].join(",");
 
 const GridBackground = () => {
   const reduceMotion = useReducedMotion();
-  const { scrollY } = useScroll();
 
-  // Modulo the coarse cell so the plane loops seamlessly — the grid reads as
-  // infinite without ever translating far from its origin.
-  const y = useTransform(scrollY, (value) =>
-    reduceMotion ? 0 : -((value * PARALLAX) % COARSE)
+  // Scroll drift, wrapped at the cell size so the grid stays perfectly seamless
+  // however far the page scrolls.
+  const { scrollY } = useScroll();
+  const scrollDrift = useTransform(scrollY, (value) =>
+    reduceMotion ? 0 : -((value * 0.08) % CELL)
+  );
+
+  // Mouse parallax: a handful of pixels, deliberately below the threshold where
+  // it reads as movement. It registers as depth, not animation.
+  const pointer = useWindowPointerOffset({ disabled: reduceMotion });
+  const spring = { stiffness: 60, damping: 20, mass: 0.6 };
+  const pointerX = useSpring(
+    useTransform(pointer.offsetX, [-0.5, 0.5], [6, -6]),
+    spring
+  );
+  const pointerY = useSpring(
+    useTransform(pointer.offsetY, [-0.5, 0.5], [6, -6]),
+    spring
+  );
+
+  const y = useTransform(
+    [scrollDrift, pointerY],
+    ([drift, pointerOffset]) => drift + pointerOffset
   );
 
   return (
     <div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-      style={{ perspective: 1200 }}
+      style={{ perspective: 1400 }}
     >
-      {/* Grid plane. Sits taller than the viewport so the parallax translate
-          never exposes an edge. */}
+      {/* Grid plane. Unmasked: the paper covers the full viewport at one even
+          strength, which is the whole point. Depth comes from the bloom and
+          vignette layered over it, not from fading the grid out. */}
       <motion.div
+        className="absolute"
         style={{
+          inset: -OVERSCAN,
+          x: pointerX,
           y,
-          // A degree and a half of tilt: enough to read as a surface in space,
-          // not enough to bend the lines into a gimmick. Declared as motion
-          // style props so framer composes them with `y` into one transform.
-          rotateX: 1.5,
-          scale: 1.04,
-          top: -COARSE,
-          height: `calc(100% + ${COARSE * 2}px)`,
-          backgroundImage: [
-            `repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0 1px, transparent 1px ${COARSE / 4}px)`,
-            `repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0 1px, transparent 1px ${COARSE / 4}px)`,
-            `repeating-linear-gradient(to right, rgba(56,189,248,0.07) 0 1px, transparent 1px ${COARSE}px)`,
-            `repeating-linear-gradient(to bottom, rgba(56,189,248,0.07) 0 1px, transparent 1px ${COARSE}px)`,
-          ].join(","),
-          maskImage:
-            "radial-gradient(ellipse 90% 70% at 50% 30%, #000 45%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 90% 70% at 50% 30%, #000 45%, transparent 100%)",
+          // Barely more than a degree: enough for the surface to sit in space,
+          // not enough to bend the lines into an effect.
+          rotateX: 1.2,
+          scale: 1.05,
+          backgroundImage: grid,
+          willChange: "transform",
         }}
-        className="absolute inset-x-0"
       />
 
-      {/* Ambient light. Slow, wide and low-contrast — gives the grid somewhere
-          to fall off to instead of ending flat. */}
+      {/* Soft bloom. Neutral white at very low alpha, breathing on a long
+          cycle — lifts the centre of the page without tinting it. */}
       <motion.div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,189,248,0.06), transparent 70%)",
+            "radial-gradient(ellipse 70% 55% at 50% 30%, rgba(255, 255, 255, 0.045), transparent 70%)",
+          willChange: "opacity, transform",
         }}
-        animate={reduceMotion ? undefined : { opacity: [0.75, 1, 0.75] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        animate={
+          reduceMotion
+            ? undefined
+            : { opacity: [0.75, 1, 0.75], scale: [1, 1.04, 1] }
+        }
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Vignette. Kept very shallow and pushed right to the edge — the
+          previous, heavier version was erasing the grid it sat on. */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 100% 95% at 50% 45%, transparent 65%, rgba(0, 0, 0, 0.28) 100%)",
+        }}
       />
     </div>
   );

@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-    --background: #111111;
+    /* Pure black field for the engineering graph-paper background — neutral,
+       no colour cast. Grid hairlines are neutral white on top. */
+    --background: #050505;
     --backgroundSecondary: #1a1a1a;
     --backgroundLight: #2d2d2d;
     --primary: #ffffff;

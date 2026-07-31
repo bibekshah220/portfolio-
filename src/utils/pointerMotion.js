@@ -1,13 +1,7 @@
+import { useEffect } from "react";
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
 
-// Shared pointer-motion primitives.
-//
-// Tilt, magnetic buttons and hero parallax are all the same idea: normalise the
-// pointer against an element, then spring a transform off it. One core hook, so
-// the physics feel identical everywhere instead of drifting per component.
-//
-// Motion values are written outside React — tracking the pointer costs zero
-// re-renders and every transform stays on the compositor.
+
 
 const SPRING = { stiffness: 150, damping: 18, mass: 0.4 };
 
@@ -36,6 +30,28 @@ export function usePointerOffset({ disabled = false } = {}) {
   };
 }
 
+
+export function useWindowPointerOffset({ disabled = false } = {}) {
+  const offsetX = useMotionValue(0);
+  const offsetY = useMotionValue(0);
+
+  useEffect(() => {
+    if (disabled) return;
+    // Coarse pointers have no hover, so there is nothing to track.
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
+    const onMove = (event) => {
+      offsetX.set(event.clientX / window.innerWidth - 0.5);
+      offsetY.set(event.clientY / window.innerHeight - 0.5);
+    };
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, [disabled, offsetX, offsetY]);
+
+  return { offsetX, offsetY };
+}
+
 // 3D tilt. Spread `bind` on the element you pass `rotateX`/`rotateY` to.
 export function useTilt({ max = 7, disabled = false } = {}) {
   const { offsetX, offsetY, bind } = usePointerOffset({ disabled });
@@ -52,9 +68,7 @@ export function useMagnetic({ max = 8, disabled = false } = {}) {
   return { x, y, ...bind };
 }
 
-// Depth parallax: feed one shared offset to several layers with different
-// strengths, `invert` sends a layer the other way so foreground and background
-// visibly separate.
+
 export function useParallaxLayer(
   offsetX,
   offsetY,
