@@ -44,6 +44,20 @@ const projects = [
       </ul>
     `,
   },
+  {
+    id: 3,
+    title: "Multi-Agent AI Research System",
+    url: "https://multi-agent-ai-o2ssfixv3gvbjdnyhhtmtl.streamlit.app/",
+    featuredImage: "/multi-agent-ai.png",
+    stack: ["Python", "LangChain", "LangGraph", "Streamlit", "Google Gemini"],
+    description: `
+      <ul style='list-style: disc; padding-left: 1rem;'>
+        <li>Built an autonomous multi-agent pipeline that researches, reads, writes, and critiques reports end to end.</li>
+        <li>Orchestrated Research, Reader, Writer, and Critic agents using LangChain and LangGraph.</li>
+        <li>Integrated live web search, scraping, and a Google Gemini LLM behind a Streamlit UI.</li>
+      </ul>
+    `,
+  },
 ];
 
 export default function Projects() {
