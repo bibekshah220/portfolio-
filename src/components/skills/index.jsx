@@ -8,6 +8,7 @@ import {
   FaPython,
   FaNetworkWired,
   FaBrain,
+  FaRobot,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -23,6 +24,8 @@ import {
   SiRabbitmq,
   SiAmazoncloudwatch,
   SiKubernetes,
+  SiLangchain,
+  SiStreamlit,
 } from "react-icons/si";
 
 import SkillCard from "./SkillCard";
@@ -138,6 +141,22 @@ const data = [
   {
     icon: <FaBrain color="#A855F7" />,
     title: "RAG",
+  },
+  {
+    icon: <SiLangchain color="#1C7A63" />,
+    title: "LangChain",
+  },
+  {
+    icon: <FaNetworkWired color="#4B8BF5" />,
+    title: "LangGraph",
+  },
+  {
+    icon: <FaRobot color="#22C55E" />,
+    title: "AI Agents",
+  },
+  {
+    icon: <SiStreamlit color="#FF4B4B" />,
+    title: "Streamlit",
   },
   {
     icon: <SiKubernetes color="#326CE5" />,
