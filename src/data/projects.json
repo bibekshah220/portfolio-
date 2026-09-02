@@ -41,5 +41,18 @@
       "Google Gemini"
     ],
     "description": "<ul style='list-style: disc; padding-left: 1rem;'><li>Built an autonomous multi-agent pipeline that researches, reads, writes, and critiques reports end to end.</li><li>Orchestrated Research, Reader, Writer, and Critic agents using LangChain and LangGraph.</li><li>Integrated live web search, scraping, and a Google Gemini LLM behind a Streamlit UI.</li></ul>"
+  },
+  {
+    "id": 3,
+    "title": "M-EACH Group of Technology",
+    "featuredImage": "/meach-group.png",
+    "url": "https://m-each.vercel.app/",
+    "stack": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Framer Motion"
+    ],
+    "description": "<ul style='list-style: disc; padding-left: 1rem;'><li>Built a corporate website for a telecom infrastructure firm offering network deployment, site management, and power distribution.</li><li>Developed responsive pages with light/dark theming and smooth animated sections.</li><li>Showcased services, projects, and company milestones with an interactive, modern UI.</li></ul>"
   }
 ]
