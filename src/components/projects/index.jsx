@@ -38,7 +38,7 @@ const Projects = () => {
 
       <div className="main-container pt-[3rem] px-[1.5rem]">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-12">
-          {projects.slice(0, 3).map((data) => (
+          {projects.slice(0, 4).map((data) => (
             <ProjectCard key={data.id} data={data} />
           ))}
         </div>
