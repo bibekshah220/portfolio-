@@ -45,7 +45,7 @@
   {
     "id": 3,
     "title": "M-EACH Group of Technology",
-    "featuredImage": "/meach-group.png",
+    "featuredImage": "/m-each-browser-mockup.svg",
     "url": "https://m-each.vercel.app/",
     "stack": [
       "Next.js",
