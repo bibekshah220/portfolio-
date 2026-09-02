@@ -58,6 +58,20 @@ const projects = [
       </ul>
     `,
   },
+  {
+    id: 4,
+    title: "M-EACH Group of Technology",
+    url: "https://m-each.vercel.app/",
+    featuredImage: "/m-each-browser-mockup.svg",
+    stack: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    description: `
+      <ul style='list-style: disc; padding-left: 1rem;'>
+        <li>Built a corporate website for a telecom infrastructure firm offering network deployment, site management, and power distribution.</li>
+        <li>Developed responsive pages with light/dark theming and smooth animated sections.</li>
+        <li>Showcased services, projects, and company milestones with an interactive, modern UI.</li>
+      </ul>
+    `,
+  },
 ];
 
 export default function Projects() {
