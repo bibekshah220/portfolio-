@@ -98,7 +98,7 @@ const Contact = () => {
           {/* LinkedIn */}
           <Magnetic max={10}>
             <a
-              href="https://www.linkedin.com/in/bibek-shah-8b460b2bb"
+              href="https://www.linkedin.com/in/bibekshah-dev/"
               target="_blank"
               rel="noreferrer"
             >
