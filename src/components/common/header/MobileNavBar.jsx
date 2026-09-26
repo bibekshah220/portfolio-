@@ -61,7 +61,7 @@ const MobileNavBar = ({ data }) => {
       {/* SOCIAL ICONS */}
       <div className="flex flex-row gap-6 items-center text-primary text-[24px] pt-2">
         <a
-          href="https://www.linkedin.com/in/bibek-shah-8b460b2bb"
+          href="https://www.linkedin.com/in/bibekshah-dev/"
           target="_blank"
           rel="noreferrer"
           className="hover:scale-125 duration-300 transition-all"
