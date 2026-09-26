@@ -1,10 +1,13 @@
 import { useState } from "react";
 import CircleGlow from "@/components/CircleGlow/CircleGlow";
+import Seo from "@/components/common/Seo";
 
 export default function CircleGlowPage() {
     const [darkMode, setDarkMode] = useState(false);
 
     return (
+        <>
+        <Seo title="Circle Glow - Bibek Shah" noindex />
         <div
             style={{
                 display: "flex",
@@ -34,5 +37,6 @@ export default function CircleGlowPage() {
 
             <CircleGlow darkMode={darkMode} />
         </div>
+        </>
     );
 }
