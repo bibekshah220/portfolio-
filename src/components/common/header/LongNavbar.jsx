@@ -44,7 +44,7 @@ const LongNavbar = ({ data }) => {
         {/* SOCIAL ICONS */}
         <div className="flex flex-row gap-4 items-center text-primary text-[22px]">
           <a
-            href="https://www.linkedin.com/in/bibek-shah-8b460b2bb"
+            href="https://www.linkedin.com/in/bibekshah-dev/"
             target="_blank"
             rel="noreferrer"
             className="hover:scale-110 duration-200 transition-transform"
