@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Head from "next/head";
 
 import Contact from "@/components/contact";
 import Header from "@/components/common/header";
+import Seo from "@/components/common/Seo";
 import TextContainer from "@/components/common/TextContainer";
 import ProjectCard from "@/components/projects/ProjectCard";
 import { wordsContainerNoDelay } from "@/utils/AnimationVarients";
@@ -77,9 +77,11 @@ const projects = [
 export default function Projects() {
   return (
     <>
-      <Head>
-        <title>Projects - Bibek Shah</title>
-      </Head>
+      <Seo
+        title="Projects - Bibek Shah | MERN Stack & Full-Stack Web Projects"
+        description="Selected full-stack projects by Bibek Shah, including MERN stack e-commerce platforms, AI tooling, tour management systems and cloud-deployed web applications."
+        path="/projects"
+      />
       <main className="bg-background">
         <Header />
 

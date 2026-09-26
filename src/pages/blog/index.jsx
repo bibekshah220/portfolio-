@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Head from "next/head";
 
 import Contact from "@/components/contact";
 import Header from "@/components/common/header";
+import Seo from "@/components/common/Seo";
 import TextContainer from "@/components/common/TextContainer";
 import BlogCard from "@/components/blog/BlogCard";
 import { wordsContainerNoDelay } from "@/utils/AnimationVarients";
@@ -12,9 +12,11 @@ import blogs from "../../data/blogs.json";
 export default function Blog() {
   return (
     <>
-      <Head>
-        <title>Blog - Bibek Shah</title>
-      </Head>
+      <Seo
+        title="Blog - Bibek Shah | JavaScript, Linux, Cloud & DevOps Guides"
+        description="In-depth engineering guides by Bibek Shah on JavaScript, Git, Linux, AWS Lambda, Playwright MCP and modern full-stack development."
+        path="/blog"
+      />
       <main className="bg-background">
         <Header />
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import BlogSeo from "@/components/blog/BlogSeo";
 import { motion } from "framer-motion";
 import Header from "@/components/common/header";
 import Contact from "@/components/contact";
@@ -10,9 +10,7 @@ import CodeBlock from "@/components/blog/CodeBlock";
 const PlaywrightMCPGuide = () => {
     return (
         <>
-            <Head>
-                <title>MCP + Playwright: Complete Guide - Bibek Shah</title>
-            </Head>
+            <BlogSeo slug="playwright-mcp-guide" />
             <main className="bg-background min-h-screen">
                 <Header />
 

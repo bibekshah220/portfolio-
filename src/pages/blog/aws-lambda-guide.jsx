@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import BlogSeo from "@/components/blog/BlogSeo";
 import { motion } from "framer-motion";
 import Header from "@/components/common/header";
 import Contact from "@/components/contact";
@@ -11,9 +11,7 @@ import CodeBlock from "@/components/blog/CodeBlock";
 const AWSLambdaGuide = () => {
     return (
         <>
-            <Head>
-                <title>Exploring AWS Lambda: A Practical Guide - Bibek Shah</title>
-            </Head>
+            <BlogSeo slug="aws-lambda-guide" />
             <main className="bg-background min-h-screen">
                 <Header />
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import BlogSeo from "@/components/blog/BlogSeo";
 import { motion } from "framer-motion";
 import Header from "@/components/common/header";
 import Contact from "@/components/contact";
@@ -66,9 +66,7 @@ const GitCommandsGuide = () => {
 
     return (
         <>
-            <Head>
-                <title>Mastering Git: The Complete Command Line Guide - Bibek Shah</title>
-            </Head>
+            <BlogSeo slug="git-commands-guide" />
             <main className="bg-background min-h-screen">
                 <Header />
 
