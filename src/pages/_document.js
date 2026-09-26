@@ -10,7 +10,6 @@ export default function Document() {
           as="script"
           href="https://www.googletagmanager.com/gtag/js?id=G-Y20ZWK8XJK"
         />
-        <link rel="canonical" href="https://www.bibeksah.com.np" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
