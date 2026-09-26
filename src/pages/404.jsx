@@ -1,13 +1,15 @@
 import Header from "@/components/common/header";
-import Head from "next/head";
+import Seo from "@/components/common/Seo";
 import React from "react";
 
 export default function NotFound() {
   return (
     <>
-      <Head>
-        <title>Page Not Found - Bibek Shah</title>
-      </Head>
+      <Seo
+        title="Page Not Found - Bibek Shah"
+        description="The requested page could not be found."
+        noindex
+      />
       <section className="h-[100vh] w-full flex justify-center items-center bg-background">
         <Header />
         <div className="flex flex-row items-center leading-none">
