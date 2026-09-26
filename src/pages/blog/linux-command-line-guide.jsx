@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import BlogSeo from "@/components/blog/BlogSeo";
 import { motion } from "framer-motion";
 import Header from "@/components/common/header";
 import Contact from "@/components/contact";
@@ -10,9 +10,7 @@ import CodeBlock from "@/components/blog/CodeBlock";
 const LinuxCommandGuide = () => {
     return (
         <>
-            <Head>
-                <title>Linux Command Line: The Complete Guide - Bibek Shah</title>
-            </Head>
+            <BlogSeo slug="linux-command-line-guide" />
             <main className="bg-background min-h-screen">
                 <Header />
 
