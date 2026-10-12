@@ -1,5 +1,20 @@
 [
   {
+    "id": 4,
+    "title": "N.S Gadget Hub (E-Commerce Store)",
+    "featuredImage": "/ns-gadget-hub.png",
+    "url": "https://ns-gadget-hub.vercel.app/",
+    "stack": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Tailwind CSS",
+      "Cloudinary",
+      "Stripe"
+    ],
+    "description": "<ul style='list-style: disc; padding-left: 1rem;'><li>Built an online gadget store for the Nepal market with product catalog, cart, and order checkout.</li><li>Implemented a seller dashboard with Cloudinary-backed product image uploads and inventory management.</li><li>Wired multi-method checkout supporting cash on delivery, Khalti, eSewa, and card payments.</li></ul>"
+  },
+  {
     "id": 0,
     "title": "E-Commerce Platform (MERN Stack)",
     "featuredImage": "/ecommerce-project-v2.png",
