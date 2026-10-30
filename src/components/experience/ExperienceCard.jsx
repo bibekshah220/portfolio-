@@ -47,17 +47,42 @@ const ExperienceCard = ({ data, active, index }) => {
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
       className="sm:py-10 sm:px-8 py-8 px-6 bg-backgroundSecondary/70 backdrop-blur-md border border-white/5 rounded-xl flex flex-col gap-5 mx-3 hover:border-white/10 hover:shadow-lg hover:shadow-black/20 transition-all duration-300"
     >
-      <div>
+      <div className="flex flex-row gap-4 items-start">
+        {data.logo && (
+          <span className="shrink-0 h-14 w-14 rounded-xl bg-white p-2 flex items-center justify-center border border-white/10">
+            <img
+              src={data.logo}
+              alt={`${data.company} logo`}
+              width={40}
+              height={40}
+              loading="lazy"
+              className="h-full w-full object-contain"
+            />
+          </span>
+        )}
+        <div className="min-w-0">
         <h3 className="font-prompt text-primary font-semibold text-[22px] tracking-wide">
           {data.title}
         </h3>
-        <h4 className="font-prompt text-textSecondary font-medium text-[16px] mt-1">
-          {data.company}
-        </h4>
+        {data.companyUrl ? (
+          <a
+            href={data.companyUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="font-prompt text-textSecondary font-medium text-[16px] mt-1 inline-block hover:text-primary transition-colors"
+          >
+            {data.company}
+          </a>
+        ) : (
+          <h4 className="font-prompt text-textSecondary font-medium text-[16px] mt-1">
+            {data.company}
+          </h4>
+        )}
         <p className="font-karla text-textDim font-medium text-xs uppercase pt-3 tracking-widest">
           {data.dateStarted} - {data.dateEnd}{" "}
           <span className="text-textSecondary normal-case ml-2">{duration}</span>
         </p>
+        </div>
       </div>
       <ul className="font-karla text-textDim list-disc pl-5 max-w-prose leading-relaxed">
         {data.description.map((entry, key) => (
